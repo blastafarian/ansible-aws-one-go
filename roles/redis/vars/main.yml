@@ -1,0 +1,7 @@
+---
+image_name: "redis"
+image_version: "latest"
+container_name: "redis"
+redis_bind: "0.0.0.0"
+redis_port: 6379
+db_dump_dir: "/srv/redis/data"

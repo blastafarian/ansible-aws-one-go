@@ -1,0 +1,11 @@
+---
+- name: Restart application
+  docker:
+    name: "app"
+    image: "{{ image_name }}:{{ image_version }}"
+    state: restarted
+    pull: always
+    volumes:
+      - "/srv/app1:/srv"
+    command: "/bin/sh /srv/start.sh"
+    net: "host"

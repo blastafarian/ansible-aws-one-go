@@ -1,0 +1,30 @@
+---
+- name: Create app folder
+  file:
+    path: /srv/app1
+    state: directory
+    mode: 0755
+
+- name: Copy start script to /srv
+  copy:
+    src: start.sh
+    dest: /srv/app1/start.sh
+    mode: 0755
+
+- name: Copy app to /srv
+  copy:
+    src: app.rb
+    dest: /srv/app1/app.rb
+    mode: 0644
+  notify: Restart application
+
+- name: Start App container
+  docker:
+    name: "app"
+    image: "{{ image_name }}:{{ image_version }}"
+    state: started
+    pull: always
+    volumes:
+      - "/srv/app1:/srv"
+    command: "/bin/sh /srv/start.sh"
+    net: "host"

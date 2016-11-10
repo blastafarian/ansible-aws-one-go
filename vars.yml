@@ -1,0 +1,12 @@
+---
+  ec2_vpc: ""
+  ec2_ami: "ami-db704cb8"
+  ec2_region: "ap-southeast-2"
+  ec2_zone: "ap-southeast-2a"
+  ec2_subnet: ""
+  ec2_instance_size: "t2.micro"
+  ec2_instance_count: 1
+  ec2_sg_name: "appsg"
+  aws_key_pair: "aws1"
+  app_name: "APP1"
+  elb_name: "app-elb"

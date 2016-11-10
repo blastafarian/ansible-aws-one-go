@@ -1,0 +1,16 @@
+---
+- name: Install docker
+  yum:
+    name: "docker"
+    state: present
+
+- name: Enable and start Docker service
+  service:
+    name: docker
+    state: started
+    enabled: yes
+
+- name: Install docker-py module
+  pip:
+    name: docker-py
+    version: 1.8

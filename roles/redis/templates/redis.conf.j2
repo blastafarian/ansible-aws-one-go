@@ -1,0 +1,6 @@
+bind "{{ redis_bind }}"
+port "{{ redis_port }}"
+databases 8
+dbfilename dump.rdb
+dir "{{ db_dump_dir }}"
+daemonize no

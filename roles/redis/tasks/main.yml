@@ -1,0 +1,24 @@
+---
+- name: Create data folder
+  file:
+    path: "/srv/redis/data"
+    state: directory
+    mode: 0755
+
+- name: Copy redis config file
+  template:
+    src: "redis.conf.j2"
+    dest: "/srv/redis/redis.conf"
+    mode: 0644
+
+- name: Start Redis container
+  docker:
+    name: "{{ container_name }}"
+    image: "{{ image_name }}:{{ image_version }}"
+    state: started
+    pull: always
+    volumes:
+      - "/srv/redis:/srv/redis"
+    ports:
+      - "6379:6379/tcp"
+    command: "/usr/local/bin/redis-server /srv/redis/redis.conf"

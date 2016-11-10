@@ -52,13 +52,17 @@ the play. Just copy paste in a browser and visit the URL.
 The app itself get a name via a POST request then adds it to Redis. There's a
 feature to get the list of names as a JSON array.
 
-http://elb -> will show a greeting
-http://elb/_health -> will report health, bad means Redis is down
-http://elb/list -> gives back the list
+| url | description |
+| --- | --- |
+| http://elb | will show a greeting |
+| http://elb/_health | will report health, bad means Redis is down |
+| http://elb/list | gives back the list |
+| http://elb/add  | add a name |
 
 To add a name, send a POST request with a payload similar to this:
-
+```
 { name: "name" }
+```
 
 E.g.
 
